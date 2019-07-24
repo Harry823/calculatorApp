@@ -182,6 +182,11 @@ class TestState extends Component {
               title = "C"
               onPress = {this.clearDisplay}
             />
+
+            <Button
+              title = "÷"
+              onPress = {() => this.operatorPress("/")}
+            />
             <Button
               title = "="
               onPress = {() => this.calculate(this.display)}
