@@ -11,7 +11,8 @@ import {
   View,
   Text,
   StatusBar,
-  Button
+  Button,
+  StyleSheet
 } from 'react-native';
 
 class TestState extends Component {
@@ -96,114 +97,128 @@ class TestState extends Component {
     render(){
       return(
         <Fragment>
-          <Text>
-            {this.state.display}
-          </Text>
-
-          <View nativeID="buttonRowOne" style={{
-            flexDirection:'row',
-            alignItems:'center',
-            justifyContent:'center'
-            }}>
-              <Button
-                title = "1"
-                onPress = {() => this.numberPress(1)}
-              />
-              <Button
-                title = "2"
-                onPress = {() => this.numberPress(2)}
-              />
-              <Button
-                title = "3"
-                onPress = {() => this.numberPress(3)}
-              />
-              <Button
-                title = "+"
-                onPress = {() => this.operatorPress("+")}
-              />
+          <View nativeID="inputDisplay" style={{flex: 1, backgroundColor: 'powderblue'}}>
+            <Text>
+              {this.state.display}
+            </Text>
           </View>
 
-          <View nativeID="buttonRowTwo" style={{
-            flexDirection:'row',
-            alignItems:'center',
-            justifyContent:'center'
-            }}>
-            <Button
-              title = "4"
-              onPress = {() => this.numberPress(4)}
-            />
-            <Button
-              title = "5"
-              onPress = {() => this.numberPress(5)}
-            />
-            <Button
-              title = "6"
-              onPress = {() => this.numberPress(6)}
-            />
-            <Button
-              title = "-"
-              onPress = {() => this.operatorPress("-")}
-            />
+          <View nativeID="Buttons" style={{flex: 2}}>
+            <View nativeID="buttonRowOne" style={{
+              flexDirection:'row',
+              alignItems:'center',
+              justifyContent:'center'
+              }}>
+                <Button
+                  title = "1"
+                  onPress = {() => this.numberPress(1)}
+                />
+                <Button
+                  title = "2"
+                  onPress = {() => this.numberPress(2)}
+                />
+                <Button
+                  title = "3"
+                  onPress = {() => this.numberPress(3)}
+                />
+                <Button
+                  title = "+"
+                  onPress = {() => this.operatorPress("+")}
+                />
+            </View>
+
+            <View nativeID="buttonRowTwo" style={{
+              flexDirection:'row',
+              alignItems:'center',
+              justifyContent:'center'
+              }}>
+              <Button
+                title = "4"
+                onPress = {() => this.numberPress(4)}
+              />
+              <Button
+                title = "5"
+                onPress = {() => this.numberPress(5)}
+              />
+              <Button
+                title = "6"
+                onPress = {() => this.numberPress(6)}
+              />
+              <Button
+                title = "-"
+                onPress = {() => this.operatorPress("-")}
+              />
+            </View>
+
+            <View nativeID="buttonRowThree" style={{
+              flexDirection:'row',
+              alignItems:'center',
+              justifyContent:'center'
+              }}>
+              <Button
+                title = "7"
+                onPress = {() => this.numberPress(7)}
+              />
+              <Button
+                title = "8"
+                onPress = {() => this.numberPress(8)}
+              />
+              <Button
+                title = "9"
+                onPress = {() => this.numberPress(9)}
+              />
+              <Button
+                title = "x"
+                onPress = {() => this.operatorPress("*")}
+              />
+            </View>
+
+            <View nativeID="buttonRowFour" style={{
+              flexDirection:'row',
+              alignItems:'center',
+              justifyContent:'center'
+              }}>
+              <Button
+                title = "0"
+                onPress = {() => this.numberPress(0)}
+              />
+              <Button
+                title = "C"
+                onPress = {this.clearDisplay}
+              />
+
+              <Button
+                title = "÷"
+                onPress = {() => this.operatorPress("/")}
+              />
+              <Button
+                title = "="
+                onPress = {() => this.calculate(this.display)}
+              />
+            </View>
           </View>
 
-          <View nativeID="buttonRowTwo" style={{
-            flexDirection:'row',
-            alignItems:'center',
-            justifyContent:'center'
-            }}>
-            <Button
-              title = "7"
-              onPress = {() => this.numberPress(7)}
-            />
-            <Button
-              title = "8"
-              onPress = {() => this.numberPress(8)}
-            />
-            <Button
-              title = "9"
-              onPress = {() => this.numberPress(9)}
-            />
-            <Button
-              title = "x"
-              onPress = {() => this.operatorPress("*")}
-            />
-          </View>
-
-          <View nativeID="buttonRowTwo" style={{
-            flexDirection:'row',
-            alignItems:'center',
-            justifyContent:'center'
-            }}>
-            <Button
-              title = "0"
-              onPress = {() => this.numberPress(0)}
-            />
-            <Button
-              title = "C"
-              onPress = {this.clearDisplay}
-            />
-
-            <Button
-              title = "÷"
-              onPress = {() => this.operatorPress("/")}
-            />
-            <Button
-              title = "="
-              onPress = {() => this.calculate(this.display)}
-            />
-          </View>
 
         </Fragment>
       )
     }
 
 }
-
-
+/*
+const styles = StyleSheet.create({
+  display: {
+    flex: 1,
+    backgroundColor: 'powderblue'
+  },
+  buttons: {
+    flex: 2
+  }
+});
+*/
 const App = () => {
   //render() {
     return (
-      <View style={{justifyContent:"center",flex:1}}>
+      <View style={{justifyContent:"center"}}>
         <View style = {{alignItems:"center"}}>
             <TestState/>
         </View>
