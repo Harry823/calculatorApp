@@ -92,19 +92,15 @@ export class TestState extends Component {
       <View style={{flex: 1}}>
         <View
           nativeID="inputDisplay"
-          style={{flex: 1, backgroundColor: "powderblue"}}
+          style={{flex: 1, backgroundColor: "powderblue",justifyContent:"space-around"}}
         >
-          <Text>{this.state.display}</Text>
+          <Text style={{fontSize: 40}}>{this.state.display}</Text>
         </View>
 
         <View nativeID="Buttons" style={{flex: 2}}>
           <View
             nativeID="buttonRowOne"
-            style={{
-              flexDirection: "row",
-              justifyContent: "space-around",
-              flex: 1
-            }}
+            style={styles.buttons}
           >
             <Button title="1" onPress={() => this.numberPress(1)} />
             <Button title="2" onPress={() => this.numberPress(2)} />
@@ -114,11 +110,7 @@ export class TestState extends Component {
 
           <View
             nativeID="buttonRowTwo"
-            style={{
-              flexDirection: "row",
-              justifyContent: "space-around",
-              flex: 1
-            }}
+            style={styles.buttons}
           >
             <Button title="4" onPress={() => this.numberPress(4)} />
             <Button title="5" onPress={() => this.numberPress(5)} />
@@ -128,11 +120,7 @@ export class TestState extends Component {
 
           <View
             nativeID="buttonRowThree"
-            style={{
-              flexDirection: "row",
-              flex: 1,
-              justifyContent: "space-around"
-            }}
+            style={styles.buttons}
           >
             <Button title="7" onPress={() => this.numberPress(7)} />
             <Button title="8" onPress={() => this.numberPress(8)} />
@@ -142,11 +130,7 @@ export class TestState extends Component {
 
           <View
             nativeID="buttonRowFour"
-            style={{
-              flexDirection: "row",
-              justifyContent: "space-around",
-              flex: 1
-            }}
+            style={styles.buttons}
           >
             <Button title="0" onPress={() => this.numberPress(0)} />
             <Button title="C" onPress={this.clearDisplay} />
@@ -159,17 +143,25 @@ export class TestState extends Component {
     );
   }
 }
-/*
+
 const styles = StyleSheet.create({
-  display: {
-    flex: 1,
-    backgroundColor: 'powderblue'
-  },
   buttons: {
-    flex: 2
+    flexDirection: "row",
+    justifyContent: "space-around",
+    flex: 1,
+    borderRadius: 10,
+    borderWidth: 1,
+    borderColor: 'black',
+    textAlign: 'center'
+  },
+  numButton: {
+    borderRadius: 10,
+    borderWidth: 1,
+    borderColor: 'black',
+    textAlign: 'center'
   }
 });
-*/
+
 const App = () => {
   //render() {
   return <TestState />;
