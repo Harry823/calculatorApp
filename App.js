@@ -97,17 +97,17 @@ class TestState extends Component {
     render(){
       return(
         <Fragment>
-          <View nativeID="inputDisplay" style={{flex: 1, backgroundColor: 'powderblue'}}>
+          <View nativeID="inputDisplay">
             <Text>
               {this.state.display}
             </Text>
           </View>
 
-          <View nativeID="Buttons" style={{flex: 2}}>
+          <View nativeID="Buttons">
             <View nativeID="buttonRowOne" style={{
               flexDirection:'row',
               alignItems:'center',
-              justifyContent:'center'
+              justifyContent:'center',
               }}>
                 <Button
                   title = "1"
@@ -218,7 +218,7 @@ const styles = StyleSheet.create({
 const App = () => {
   //render() {
     return (
-      <View style={{justifyContent:"center"}}>
+      <View style={{justifyContent:"center", flex: 1}}>
         <View style = {{alignItems:"center"}}>
             <TestState/>
         </View>
