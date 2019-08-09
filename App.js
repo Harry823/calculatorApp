@@ -7,7 +7,7 @@
  */
 
 import React, {Fragment, Component} from "react";
-import {View, Text, StatusBar, Button, StyleSheet} from "react-native";
+import {View, Text, StatusBar, Button, StyleSheet,TouchableHighlight} from "react-native";
 
 export class TestState extends Component {
   constructor() {
@@ -54,6 +54,10 @@ export class TestState extends Component {
     });
   };
   operatorPress = operator => {
+    if (this.state.operatorClicked == true) {
+      console.log("operatorclicked is true");
+      return;
+    }
     let toDisplay = operator;
     if (this.state.operator != "") {
       toDisplay = this.calculate();
@@ -94,49 +98,96 @@ export class TestState extends Component {
           nativeID="inputDisplay"
           style={{flex: 1, backgroundColor: "powderblue",justifyContent:"space-around"}}
         >
-          <Text style={{fontSize: 40}}>{this.state.display}</Text>
+          <Text style={{fontSize: 70}}>{this.state.display}</Text>
         </View>
 
-        <View nativeID="Buttons" style={{flex: 2}}>
+        <View nativeID="Buttons" style={{flex: 2,flexDirection:"column"}}>
           <View
             nativeID="buttonRowOne"
             style={styles.buttons}
           >
-            <Button title="1" onPress={() => this.numberPress(1)} />
-            <Button title="2" onPress={() => this.numberPress(2)} />
-            <Button title="3" onPress={() => this.numberPress(3)} />
-            <Button title="+" onPress={() => this.operatorPress("+")} />
+              <TouchableHighlight style={styles.numButton} onPress=
+              {() => this.numberPress(1)}>
+                  <Text style={styles.buttonText}> 1 </Text>
+              </TouchableHighlight>
+              <TouchableHighlight style={styles.numButton} onPress=
+              {() => this.numberPress(2)}>
+                  <Text style={styles.buttonText}> 2 </Text>
+              </TouchableHighlight>
+              <TouchableHighlight style={styles.numButton} onPress=
+              {() => this.numberPress(3)}>
+                  <Text style={styles.buttonText}> 3 </Text>
+              </TouchableHighlight>
+              <TouchableHighlight style={styles.numButton} onPress=
+              {() => this.numberPress("+")}>
+                  <Text style={styles.buttonText}> + </Text>
+              </TouchableHighlight>
           </View>
 
           <View
             nativeID="buttonRowTwo"
             style={styles.buttons}
           >
-            <Button title="4" onPress={() => this.numberPress(4)} />
-            <Button title="5" onPress={() => this.numberPress(5)} />
-            <Button title="6" onPress={() => this.numberPress(6)} />
-            <Button title="-" onPress={() => this.operatorPress("-")} />
+            <TouchableHighlight style={styles.numButton} onPress=
+            {() => this.numberPress(4)}>
+                <Text style={styles.buttonText}> 4 </Text>
+            </TouchableHighlight>
+            <TouchableHighlight style={styles.numButton} onPress=
+            {() => this.numberPress(5)}>
+                <Text style={styles.buttonText}> 5 </Text>
+            </TouchableHighlight>
+            <TouchableHighlight style={styles.numButton} onPress=
+            {() => this.numberPress(6)}>
+                <Text style={styles.buttonText}> 6 </Text>
+            </TouchableHighlight>
+            <TouchableHighlight style={styles.numButton} onPress=
+            {() => this.numberPress("-")}>
+                <Text style={styles.buttonText}> - </Text>
+            </TouchableHighlight>
           </View>
 
           <View
             nativeID="buttonRowThree"
             style={styles.buttons}
           >
-            <Button title="7" onPress={() => this.numberPress(7)} />
-            <Button title="8" onPress={() => this.numberPress(8)} />
-            <Button title="9" onPress={() => this.numberPress(9)} />
-            <Button title="x" onPress={() => this.operatorPress("*")} />
+            <TouchableHighlight style={styles.numButton} onPress=
+            {() => this.numberPress(7)}>
+                <Text style={styles.buttonText}> 7 </Text>
+            </TouchableHighlight>
+            <TouchableHighlight style={styles.numButton} onPress=
+            {() => this.numberPress(8)}>
+                <Text style={styles.buttonText}> 8 </Text>
+            </TouchableHighlight>
+            <TouchableHighlight style={styles.numButton} onPress=
+            {() => this.numberPress(9)}>
+                <Text style={styles.buttonText}> 9 </Text>
+            </TouchableHighlight>
+            <TouchableHighlight style={styles.numButton} onPress=
+            {() => this.numberPress("*")}>
+                <Text style={styles.buttonText}> x </Text>
+            </TouchableHighlight>
           </View>
 
           <View
             nativeID="buttonRowFour"
             style={styles.buttons}
           >
-            <Button title="0" onPress={() => this.numberPress(0)} />
-            <Button title="C" onPress={this.clearDisplay} />
-
-            <Button title="÷" onPress={() => this.operatorPress("/")} />
-            <Button title="=" onPress={() => this.calculate(this.display)} />
+            <TouchableHighlight style={styles.numButton} onPress=
+            {() => this.numberPress(0)}>
+                <Text style={styles.buttonText}> 0 </Text>
+            </TouchableHighlight>
+            <TouchableHighlight style={styles.numButton} onPress=
+            {this.clearDisplay}>
+                <Text style={styles.buttonText}> C </Text>
+            </TouchableHighlight>
+            <TouchableHighlight style={styles.numButton} onPress=
+            {() => this.operatorPress("/")}>
+                <Text style={styles.buttonText}> ÷ </Text>
+            </TouchableHighlight>
+            <TouchableHighlight style={styles.numButton} onPress=
+            {() => this.calculate(this.display)}>
+                <Text style={styles.buttonText}> = </Text>
+            </TouchableHighlight>
           </View>
         </View>
       </View>
@@ -147,18 +198,21 @@ export class TestState extends Component {
 const styles = StyleSheet.create({
   buttons: {
     flexDirection: "row",
-    justifyContent: "space-around",
+    justifyContent: "flex-start",
     flex: 1,
-    borderRadius: 10,
-    borderWidth: 1,
-    borderColor: 'black',
-    textAlign: 'center'
   },
   numButton: {
-    borderRadius: 10,
+    alignItems: 'center',
+    backgroundColor: 'gray',
     borderWidth: 1,
-    borderColor: 'black',
-    textAlign: 'center'
+    paddingTop: 40,
+    paddingRight: 10,
+    height: 140,
+    width: 94
+  },
+  buttonText: {
+    fontSize: 40,
+    textAlign:'center'
   }
 });
 
