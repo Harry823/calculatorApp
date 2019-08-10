@@ -98,7 +98,7 @@ export class TestState extends Component {
           nativeID="inputDisplay"
           style={{flex: 1, backgroundColor: "black",justifyContent:"space-around"}}
         >
-          <Text style={{fontSize: 70,color:'white'}}>{this.state.display}</Text>
+          <Text style={{fontSize: 90,color:'white'}}>{this.state.display}</Text>
         </View>
 
         <View nativeID="Buttons" style={{flex: 2,flexDirection:"column"}}>
@@ -232,7 +232,7 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     backgroundColor: 'dimgray',
     borderWidth: 1,
-    paddingTop: 20,
+    paddingTop: 30,
     paddingRight: 10,
     height: 110,
     width: 94
