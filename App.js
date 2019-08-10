@@ -9,7 +9,7 @@
 import React, {Fragment, Component} from "react";
 import {View, Text, StatusBar, Button, StyleSheet,TouchableHighlight} from "react-native";
 
-export class TestState extends Component {
+export class Calculator extends Component {
   constructor() {
     super();
     //this.inputs = ""
@@ -251,7 +251,7 @@ const styles = StyleSheet.create({
 
 const App = () => {
   //render() {
-  return <TestState />;
+  return <Calculator />;
 };
 
 export default App;
