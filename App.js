@@ -96,32 +96,60 @@ export class TestState extends Component {
       <View style={{flex: 1}}>
         <View
           nativeID="inputDisplay"
-          style={{flex: 1, backgroundColor: "powderblue",justifyContent:"space-around"}}
+          style={{flex: 1, backgroundColor: "black",justifyContent:"space-around"}}
         >
-          <Text style={{fontSize: 70}}>{this.state.display}</Text>
+          <Text style={{fontSize: 70,color:'white'}}>{this.state.display}</Text>
         </View>
 
         <View nativeID="Buttons" style={{flex: 2,flexDirection:"column"}}>
           <View
+            nativeID="calculateAndClear"
+            style={styles.buttons}
+          >
+            <TouchableHighlight style={{
+              alignItems: 'center',
+              backgroundColor: 'darkred',
+              borderWidth: 1,
+              paddingTop: 30,
+              paddingRight: 10,
+              height: 110,
+              width: 188
+            }} onPress={this.clearDisplay}>
+                <Text style={styles.cncText}> C </Text>
+            </TouchableHighlight>
+            <TouchableHighlight style={{
+              alignItems: 'center',
+              backgroundColor: 'olivedrab',
+              borderWidth: 1,
+              paddingTop: 30,
+              paddingRight: 10,
+              height: 110,
+              width: 188
+            }} onPress={() => this.calculate(this.display)}>
+                <Text style={styles.cncText}> = </Text>
+            </TouchableHighlight>
+          </View>
+
+          <View
             nativeID="buttonRowOne"
             style={styles.buttons}
           >
-              <TouchableHighlight style={styles.numButton} onPress=
-              {() => this.numberPress(1)}>
-                  <Text style={styles.buttonText}> 1 </Text>
-              </TouchableHighlight>
-              <TouchableHighlight style={styles.numButton} onPress=
-              {() => this.numberPress(2)}>
-                  <Text style={styles.buttonText}> 2 </Text>
-              </TouchableHighlight>
-              <TouchableHighlight style={styles.numButton} onPress=
-              {() => this.numberPress(3)}>
-                  <Text style={styles.buttonText}> 3 </Text>
-              </TouchableHighlight>
-              <TouchableHighlight style={styles.numButton} onPress=
-              {() => this.numberPress("+")}>
-                  <Text style={styles.buttonText}> + </Text>
-              </TouchableHighlight>
+            <TouchableHighlight style={styles.numButton} onPress=
+            {() => this.numberPress(1)}>
+                <Text style={styles.buttonText}> 1 </Text>
+            </TouchableHighlight>
+            <TouchableHighlight style={styles.numButton} onPress=
+            {() => this.numberPress(2)}>
+                <Text style={styles.buttonText}> 2 </Text>
+            </TouchableHighlight>
+            <TouchableHighlight style={styles.numButton} onPress=
+            {() => this.numberPress(3)}>
+                <Text style={styles.buttonText}> 3 </Text>
+            </TouchableHighlight>
+            <TouchableHighlight style={styles.numButton} onPress=
+            {() => this.numberPress("+")}>
+                <Text style={styles.buttonText}> + </Text>
+            </TouchableHighlight>
           </View>
 
           <View
@@ -172,21 +200,20 @@ export class TestState extends Component {
             nativeID="buttonRowFour"
             style={styles.buttons}
           >
-            <TouchableHighlight style={styles.numButton} onPress=
-            {() => this.numberPress(0)}>
+            <TouchableHighlight style={{
+              alignItems: 'center',
+              backgroundColor: 'dimgray',
+              borderWidth: 1,
+              paddingTop: 20,
+              paddingRight: 10,
+              height: 110,
+              width: 282
+            }} onPress={() => this.numberPress(0)}>
                 <Text style={styles.buttonText}> 0 </Text>
-            </TouchableHighlight>
-            <TouchableHighlight style={styles.numButton} onPress=
-            {this.clearDisplay}>
-                <Text style={styles.buttonText}> C </Text>
             </TouchableHighlight>
             <TouchableHighlight style={styles.numButton} onPress=
             {() => this.operatorPress("/")}>
                 <Text style={styles.buttonText}> ÷ </Text>
-            </TouchableHighlight>
-            <TouchableHighlight style={styles.numButton} onPress=
-            {() => this.calculate(this.display)}>
-                <Text style={styles.buttonText}> = </Text>
             </TouchableHighlight>
           </View>
         </View>
@@ -203,16 +230,22 @@ const styles = StyleSheet.create({
   },
   numButton: {
     alignItems: 'center',
-    backgroundColor: 'gray',
+    backgroundColor: 'dimgray',
     borderWidth: 1,
-    paddingTop: 40,
+    paddingTop: 20,
     paddingRight: 10,
-    height: 140,
+    height: 110,
     width: 94
   },
   buttonText: {
     fontSize: 40,
-    textAlign:'center'
+    textAlign:'center',
+    color: 'lightgray'
+  },
+  cncText: {
+    fontSize: 40,
+    textAlign:'center',
+    color: 'lightgray'
   }
 });
 
